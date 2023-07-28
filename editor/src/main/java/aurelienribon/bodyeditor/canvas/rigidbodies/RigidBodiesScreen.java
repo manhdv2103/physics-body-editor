@@ -797,7 +797,7 @@ public class RigidBodiesScreen {
 
         bodySprite = new Sprite(region);
         bodySprite.setPosition(0, 0);
-        bodySprite.setColor(1, 1, 1, 0.5f);
+        bodySprite.setColor(1, 1, 1, 1f);
 
         bodySprite.setSize(bodySprite.getWidth(), bodySprite.getHeight());
 
