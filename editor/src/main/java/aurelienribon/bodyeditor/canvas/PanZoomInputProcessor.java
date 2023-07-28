@@ -47,15 +47,16 @@ public class PanZoomInputProcessor extends InputAdapter {
     }
 
     @Override
-    public boolean scrolled(int amount) {
-      
+    public boolean scrolled(float amountX, float amountY) {
+        float amount = amountX == 0 ? amountY : amountX;
+
        zoomLevel = (int) canvas.worldCamera.zoom;
         if (zoomLevel <= zoomMin && amount < 0) {
             zoomLevel = zoomMin;
         } else if (zoomLevel == zoomMax && amount > 0) {
             zoomLevel = zoomMax;
         } else {
-            zoomLevel = zoomLevel + (amount*10);
+            zoomLevel = zoomLevel + (int) (amount*10);
             if (zoomLevel < zoomMin ){
                 zoomLevel = zoomMin;
             }else if(zoomLevel > zoomMax){
