@@ -50,10 +50,7 @@ public class ProjectPanel extends javax.swing.JPanel {
             }
         });
 
-        prjPathField.setForeground(new Color(211,211,211));
-        prjPathField.setBackground(new Color(49,49,49));
         prjPathField.setOpaque(true);
-        prjPathField.setBorder(new LineBorder( new Color(87, 87, 87), 2, true ));
 
 
         saveBtn.setEnabled(false);
@@ -250,7 +247,7 @@ public class ProjectPanel extends javax.swing.JPanel {
         prjPathField.setEditable(false);
         prjPathField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         prjPathField.setText("<create or load a project>");
-   
+
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Project file: ");

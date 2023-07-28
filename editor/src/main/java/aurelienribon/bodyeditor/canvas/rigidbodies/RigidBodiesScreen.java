@@ -8,8 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JFileChooser;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.badlogic.gdx.Gdx;
@@ -111,7 +110,8 @@ public class RigidBodiesScreen {
         canvas.input.addProcessor(creationInputProcessor);
 
         int lblH = 25;
-        Color lblC = new Color(45 / 255f, 45 / 255f, 45 / 255f, 200 / 255f);
+        java.awt.Color menuColor = UIManager.getColor("menu");
+        Color lblC = new Color(menuColor.getRed() / 255f, menuColor.getGreen() / 255f, menuColor.getBlue() / 255f, 200 / 255f);
 
         lblModeCreation = new Label(10 + lblH, 80, lblH, "CREATE", canvas.font, lblC, Anchor.TOP_LEFT);
         lblModeEdition = new Label(10 + lblH * 2, 80, lblH, "EDIT", canvas.font, lblC, Anchor.TOP_LEFT);

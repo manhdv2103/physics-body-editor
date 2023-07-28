@@ -73,14 +73,8 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
         b2NameField.requestFocusInWindow();
         b2NameField.selectAll();
 
-        b2NameField.setBackground(new Color(68, 68, 68));
-        b2NameField.setForeground(new Color(213, 213, 213));
-        b2NameField.setBorder(new LineBorder(new Color(87, 87, 87), 2, true));
         b2NameField.setOpaque(false);
 
-        b1NameField.setBackground(new Color(68, 68, 68));
-        b1NameField.setForeground(new Color(213, 213, 213));
-        b1NameField.setBorder(new LineBorder(new Color(87, 87, 87), 2, true));
         b1NameField.setOpaque(false);
         b1NameField.setSize(150, 50);
 
@@ -235,7 +229,6 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
         setResizable(false);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/newBody.png"))); // NOI18N
-        jLabel4.setForeground(new Color(224, 224, 224));
         getContentPane().add(jLabel4, java.awt.BorderLayout.WEST);
 
         jPanel1.setOpaque(false);
@@ -246,13 +239,11 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
 
         b2CreateBtn.setLayout(new BorderLayout());
         javax.swing.JLabel b2label = new javax.swing.JLabel("FROM IMAGE");
-        b2label.setForeground(new Color(224, 224, 224));
         b2label.setPreferredSize(new Dimension(70, 30));
         b2label.setAlignmentX(javax.swing.JLabel.CENTER_ALIGNMENT);
         b2label.setVerticalAlignment(SwingConstants.CENTER);
         b2label.setHorizontalAlignment(SwingConstants.CENTER);
 
-        b2label.setBackground(new Color(65, 65, 65));
         b2label.setOpaque(true);
 
         b2CreateBtn.add(b2label);
@@ -260,13 +251,10 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
         b2CreateBtn.setBorderPainted(true);
         b2CreateBtn.setFocusPainted(false);
         b2CreateBtn.setBorder(new LineBorder(new Color(87, 87, 87), 2, true));
-        b2CreateBtn.setForeground(new Color(224, 224, 224));
-        b2CreateBtn.setBackground(new Color(65, 65, 65));
         b2CreateBtn.setVerticalAlignment(SwingConstants.CENTER);
         b2CreateBtn.setHorizontalAlignment(SwingConstants.CENTER);
 
         jLabel3.setText("Creates a new body associated to an image.");
-        jLabel3.setForeground(new Color(200, 200, 200));
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout paintedPanel3Layout = new javax.swing.GroupLayout(paintedPanel3);
@@ -298,12 +286,10 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
 
         b1CreateBtn.setLayout(new BorderLayout());
         javax.swing.JLabel oklabel = new javax.swing.JLabel("BLANK");
-        oklabel.setForeground(new Color(224, 224, 224));
         oklabel.setPreferredSize(new Dimension(60, 50));
         oklabel.setAlignmentX(javax.swing.JLabel.CENTER_ALIGNMENT);
         oklabel.setVerticalAlignment(SwingConstants.CENTER);
         oklabel.setHorizontalAlignment(SwingConstants.CENTER);
-        oklabel.setBackground(new Color(65, 65, 65));
         oklabel.setOpaque(true);
 
         b1CreateBtn.add(oklabel);
@@ -311,14 +297,11 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
         b1CreateBtn.setBorderPainted(true);
         b1CreateBtn.setFocusPainted(false);
         b1CreateBtn.setBorder(new LineBorder(new Color(87, 87, 87), 2, true));
-        b1CreateBtn.setForeground(new Color(224, 224, 224));
-        b1CreateBtn.setBackground(new Color(65, 65, 65));
         b1CreateBtn.setVerticalAlignment(SwingConstants.CENTER);
         b1CreateBtn.setHorizontalAlignment(SwingConstants.CENTER);
         b1CreateBtn.setPreferredSize(new Dimension(60, 50));
 
         jLabel1.setText("Creates a new empty body with no associated image.");
-        jLabel1.setForeground(new Color(50, 50, 50));
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout paintedPanel1Layout = new javax.swing.GroupLayout(paintedPanel1);
@@ -351,13 +334,11 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
 
         b3CreateBtn.setLayout(new BorderLayout());
         javax.swing.JLabel b3label = new javax.swing.JLabel("FROM MULTIPLE IMAGES");
-        b3label.setForeground(new Color(224, 224, 224));
         b3label.setPreferredSize(new Dimension(60, 45));
         b3label.setAlignmentX(javax.swing.JLabel.CENTER_ALIGNMENT);
         b3label.setVerticalAlignment(SwingConstants.CENTER);
         b3label.setHorizontalAlignment(SwingConstants.CENTER);
         b3label.setOpaque(true);
-        b3label.setBackground(new Color(65, 65, 65));
         b3label.setOpaque(true);
 
         b3CreateBtn.add(b3label);
@@ -366,13 +347,10 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
         b3CreateBtn.setFocusPainted(false);
         b3CreateBtn.setPreferredSize(new Dimension(60, 50));
         b3CreateBtn.setBorder(new LineBorder(new Color(87, 87, 87), 2, true));
-        b3CreateBtn.setForeground(new Color(224, 224, 224));
-        b3CreateBtn.setBackground(new Color(65, 65, 65));
         b3CreateBtn.setVerticalAlignment(SwingConstants.CENTER);
         b3CreateBtn.setHorizontalAlignment(SwingConstants.CENTER);
 
         jLabel2.setText("Creates multiple bodies associated to selected images.");
-        jLabel2.setForeground(new Color(200, 200, 200));
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout paintedPanel2Layout = new javax.swing.GroupLayout(paintedPanel2);

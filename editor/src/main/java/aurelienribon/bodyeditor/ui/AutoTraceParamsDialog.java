@@ -124,13 +124,11 @@ public class AutoTraceParamsDialog extends javax.swing.JDialog {
 
                 okBtn.setLayout(new BorderLayout());
                 javax.swing.JLabel oklabel = new javax.swing.JLabel("OK");
-                oklabel.setForeground(new Color(224, 224, 224));
                 oklabel.setPreferredSize(new Dimension(70, 30));
                 oklabel.setAlignmentX(javax.swing.JLabel.CENTER_ALIGNMENT);
                 oklabel.setVerticalAlignment(SwingConstants.CENTER);
                 oklabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-                oklabel.setBackground(new Color(65, 65, 65));
                 oklabel.setOpaque(true);
 
                 okBtn.add(oklabel);
@@ -138,20 +136,16 @@ public class AutoTraceParamsDialog extends javax.swing.JDialog {
                 okBtn.setBorderPainted(true);
                 okBtn.setFocusPainted(false);
                 okBtn.setBorder(new LineBorder(new Color(87, 87, 87), 2, true));
-                okBtn.setForeground(new Color(224, 224, 224));
-                okBtn.setBackground(new Color(65, 65, 65));
                 okBtn.setVerticalAlignment(SwingConstants.CENTER);
                 okBtn.setHorizontalAlignment(SwingConstants.CENTER);
 
                 cancelBtn.setLayout(new BorderLayout());
                 javax.swing.JLabel label = new javax.swing.JLabel("CANCEL");
-                label.setForeground(new Color(224, 224, 224));
                 label.setPreferredSize(new Dimension(70, 30));
                 label.setAlignmentX(javax.swing.JLabel.CENTER_ALIGNMENT);
                 label.setVerticalAlignment(SwingConstants.CENTER);
                 label.setHorizontalAlignment(SwingConstants.CENTER);
 
-                label.setBackground(new Color(65, 65, 65));
                 label.setOpaque(true);
 
                 cancelBtn.add(label);
@@ -159,8 +153,6 @@ public class AutoTraceParamsDialog extends javax.swing.JDialog {
                 cancelBtn.setBorderPainted(true);
                 cancelBtn.setFocusPainted(false);
                 cancelBtn.setBorder(new LineBorder(new Color(87, 87, 87), 2, true));
-                cancelBtn.setForeground(new Color(224, 224, 224));
-                cancelBtn.setBackground(new Color(65, 65, 65));
                 cancelBtn.setVerticalAlignment(SwingConstants.CENTER);
                 cancelBtn.setHorizontalAlignment(SwingConstants.CENTER);
 

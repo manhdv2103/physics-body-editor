@@ -165,6 +165,7 @@ public class RigidBodiesOptionsPanel extends javax.swing.JPanel {
         gridGapSpinner.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(100.0f), Float.valueOf(1.0f),
                 Float.valueOf(1000.0f), Float.valueOf(0.1f)));
         gridGapSpinner.setFocusable(false);
+        gridGapSpinner.setBorder(new LineBorder(new Color(192,192,192)));
 
         drawShapeChk.setSelected(true);
         drawShapeChk.setText("Draw shapes");
@@ -192,7 +193,6 @@ public class RigidBodiesOptionsPanel extends javax.swing.JPanel {
 
         resetZoomBtn.setContentAreaFilled(false);
         resetZoomBtn.setOpaque(true);
-        resetZoomBtn.setBackground(new Color(87, 87, 87));
         resetZoomBtn.setBorderPainted(true);
         resetZoomBtn.setFocusPainted(false);
 
@@ -203,7 +203,6 @@ public class RigidBodiesOptionsPanel extends javax.swing.JPanel {
         setPivotBtn.setFocusable(false);
         setPivotBtn.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         setPivotBtn.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        setPivotBtn.setBackground(new Color(87, 87, 87));
         setPivotBtn.setContentAreaFilled(false);
         setPivotBtn.setOpaque(true);
         setPivotBtn.setBorderPainted(true);
