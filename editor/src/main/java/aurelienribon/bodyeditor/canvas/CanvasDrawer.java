@@ -4,12 +4,15 @@ import static com.badlogic.gdx.graphics.GL20.GL_BLEND;
 import static com.badlogic.gdx.graphics.GL20.GL_ONE_MINUS_SRC_ALPHA;
 import static com.badlogic.gdx.graphics.GL20.GL_SRC_ALPHA;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -40,6 +43,9 @@ public class CanvasDrawer {
 
     private final ShapeRenderer drawer = new ShapeRenderer();
     private final SpriteBatch batch;
+    private final BitmapFont font = new BitmapFont();
+    private final GlyphLayout layout = new GlyphLayout();
+    private final DecimalFormat decimalFormat = new DecimalFormat("#");
     private final OrthographicCamera camera;
     private final Sprite v00Sprite;
     private final Sprite v10Sprite;
@@ -58,6 +64,8 @@ public class CanvasDrawer {
         v00Sprite.setColor(AXIS_COLOR);
         v10Sprite.setColor(AXIS_COLOR);
         v01Sprite.setColor(AXIS_COLOR);
+
+        font.setUseIntegerPositions(false);
     }
 
     // -------------------------------------------------------------------------
@@ -280,15 +288,14 @@ public class CanvasDrawer {
             for (Vector2 p : shape.getVertices()) {
                 if (p == nearestPoint || (selectedPoints != null && selectedPoints.contains(p))) {
                     drawer.begin(ShapeRenderer.ShapeType.Filled);
-                    drawer.setColor(SHAPE_COLOR);
-                    drawer.rect(p.cpy().sub(w / 2, w / 2).x, p.cpy().sub(w / 2, w / 2).y, w, w);
-                    drawer.end();
+
+
                 } else {
                     drawer.begin(ShapeRenderer.ShapeType.Line);
-                    drawer.setColor(SHAPE_COLOR);
-                    drawer.rect(p.cpy().sub(w / 2, w / 2).x, p.cpy().sub(w / 2, w / 2).y, w, w);
-                    drawer.end();
                 }
+                drawer.setColor(SHAPE_COLOR);
+                drawer.rect(p.cpy().sub(w / 2, w / 2).x, p.cpy().sub(w / 2, w / 2).y, w, w);
+                drawer.end();
             }
         }
 
@@ -297,6 +304,25 @@ public class CanvasDrawer {
             drawer.setColor(SHAPE_LASTLINE_COLOR);
             drawer.rect(nextPoint.cpy().sub(w / 2, w / 2).x, nextPoint.cpy().sub(w / 2, w / 2).y, w, w);
             drawer.end();
+        }
+
+        if (nearestPoint != null) {
+            String coord = String.format("(%s, %s)", decimalFormat.format(nearestPoint.x), decimalFormat.format(nearestPoint.y));
+
+            font.getData().setScale(0.003f * camera.zoom);
+            layout.setText(font, coord);
+            float width = layout.width * 1.1f;
+            float height = layout.height * 1.6f;
+
+            drawer.begin(ShapeRenderer.ShapeType.Filled);
+            drawer.setColor(Color.DARK_GRAY.r, Color.DARK_GRAY.g, Color.DARK_GRAY.b, 0.8f);
+            drawer.rect(nearestPoint.cpy().sub(w / 2, w / 2).x + 0.05f * camera.zoom - layout.width * 0.05f, nearestPoint.cpy().sub(w / 2, w / 2).y - height + layout.height * 0.2f, width, height);
+            drawer.end();
+
+            batch.begin();
+            font.setColor(Color.WHITE);
+            font.draw(batch, coord, nearestPoint.cpy().sub(w / 2, w / 2).x + 0.05f * camera.zoom, nearestPoint.cpy().sub(w / 2, w / 2).y);
+            batch.end();
         }
     }
 
