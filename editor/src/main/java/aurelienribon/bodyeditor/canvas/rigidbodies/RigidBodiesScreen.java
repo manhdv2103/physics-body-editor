@@ -2,6 +2,7 @@ package aurelienribon.bodyeditor.canvas.rigidbodies;
 
 import static aurelienribon.bodyeditor.canvas.Canvas.worldCamera;
 
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -317,6 +318,7 @@ public class RigidBodiesScreen {
                         chooser.setDialogTitle("Select the background image for the selected model");
                         chooser.setFileFilter(new FileNameExtensionFilter("Image files", "png", "jpg", "jpeg"));
                         chooser.setMultiSelectionEnabled(false);
+                        chooser.setPreferredSize(new Dimension(800, 600));
 
                         if (chooser.showOpenDialog(Ctx.window) == JFileChooser.APPROVE_OPTION) {
                             String path = Ctx.io.buildImagePath(chooser.getSelectedFile());

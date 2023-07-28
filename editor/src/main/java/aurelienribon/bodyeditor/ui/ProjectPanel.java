@@ -78,7 +78,8 @@ public class ProjectPanel extends javax.swing.JPanel {
         JFileChooser chooser = new JFileChooser(dir);
         chooser.setDialogTitle("Add new project file");
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
+        chooser.setPreferredSize(new Dimension(800, 600));
+
         chooser.setMultiSelectionEnabled(false);
 
         if (chooser.showSaveDialog(Ctx.window) == JFileChooser.APPROVE_OPTION) {
@@ -99,6 +100,7 @@ public class ProjectPanel extends javax.swing.JPanel {
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setFileFilter(new FileNameExtensionFilter("Json file", "json"));
         chooser.setMultiSelectionEnabled(false);
+        chooser.setPreferredSize(new Dimension(800, 600));
 
         if (chooser.showOpenDialog(Ctx.window) == JFileChooser.APPROVE_OPTION) {
             Ctx.io.setProjectFile(chooser.getSelectedFile());
