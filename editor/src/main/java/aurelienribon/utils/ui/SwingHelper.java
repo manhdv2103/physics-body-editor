@@ -39,6 +39,7 @@ public class SwingHelper {
      */
     public static void browse(Component parent, String uri) {
         boolean error = false;
+        String os = System.getProperty("os.name").toLowerCase();
 
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
             try {
@@ -46,6 +47,13 @@ public class SwingHelper {
             } catch (URISyntaxException ex) {
                 throw new RuntimeException(ex);
             } catch (IOException ex) {
+                error = true;
+            }
+        } else if (os.contains("nix") || os.contains("nux")) { // Linux
+            try {
+                Runtime runtime = Runtime.getRuntime();
+                runtime.exec("xdg-open " + uri);
+            } catch (IOException e) {
                 error = true;
             }
         } else {
