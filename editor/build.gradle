@@ -42,7 +42,7 @@ jar {
     archiveName = "PhysicsBodyEditor.jar"
     manifest {
         attributes 'Main-Class': project.mainClassName,
-        'Class-Path': sourceSets.main.runtimeClasspath
+        'Class-Path': sourceSets.main.runtimeClasspath.files.join(" ")
     }
 //    doFirst {
 //        copy {
