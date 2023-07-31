@@ -50,11 +50,19 @@ public class ProjectPanel extends javax.swing.JPanel {
             }
         });
 
+        exportMatterJsBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exportMatterJsProject();
+            }
+        });
+
         prjPathField.setOpaque(true);
 
 
         saveBtn.setEnabled(false);
         exportDefoldBtn.setEnabled(false);
+        exportMatterJsBtn.setEnabled(false);
 
         Ctx.io.addChangeListener(new ChangeListener() {
             @Override
@@ -62,6 +70,7 @@ public class ProjectPanel extends javax.swing.JPanel {
                 if (propertyName.equals(IoManager.PROP_PROJECTFILE)) {
                     saveBtn.setEnabled(true);
                     exportDefoldBtn.setEnabled(true);
+                    exportMatterJsBtn.setEnabled(true);
                     prjPathField.setText(Ctx.io.getProjectFile().getPath());
         
                     Ctx.bodies.getModels().clear();
@@ -131,6 +140,19 @@ public class ProjectPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(Ctx.window, msg);
         }
     }
+    private void exportMatterJsProject(){
+        try {
+            Ctx.io.exportToMatterJsFile();
+            JOptionPane.showMessageDialog(Ctx.window, "Matter.js export successfully done.");
+
+        } catch (IOException ex) {
+            String msg = "Something went wrong while saving.\n\n" + ex.getClass().getSimpleName() + " - " + ex.getMessage();
+            JOptionPane.showMessageDialog(Ctx.window, msg);
+        } catch (JSONException ex) {
+            String msg = "Something went wrong while saving.\n\n" + ex.getClass().getSimpleName() + " - " + ex.getMessage();
+            JOptionPane.showMessageDialog(Ctx.window, msg);
+        }
+    }
     private void saveProject() {
         File file = Ctx.io.getProjectFile();
 
@@ -168,6 +190,7 @@ public class ProjectPanel extends javax.swing.JPanel {
         jToolBar2 = new javax.swing.JToolBar();
         saveBtn = new javax.swing.JButton();
         exportDefoldBtn = new javax.swing.JButton();
+        exportMatterJsBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         prjPathField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -216,6 +239,15 @@ public class ProjectPanel extends javax.swing.JPanel {
         saveBtn.setBorder(new LineBorder( new Color(87, 87, 87), 2, true ));
         jToolBar1.add(saveBtn);
 
+
+        exportMatterJsBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_matterjs.png"))); // NOI18N
+        exportMatterJsBtn.setContentAreaFilled(false);
+        exportMatterJsBtn.setOpaque(true);
+        exportMatterJsBtn.setBorderPainted(true);
+        exportMatterJsBtn.setFocusPainted(false);
+        exportMatterJsBtn.setToolTipText("Export for Matter.js");
+        exportMatterJsBtn.setBorder(new LineBorder( new Color(87, 87, 87), 2, true ));
+        jToolBar2.add(exportMatterJsBtn);
 
         exportDefoldBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_defold.png"))); // NOI18N
         exportDefoldBtn.setContentAreaFilled(false);
@@ -293,6 +325,7 @@ public class ProjectPanel extends javax.swing.JPanel {
     private javax.swing.JTextField prjPathField;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton exportDefoldBtn;
+    private javax.swing.JButton exportMatterJsBtn;
     // End of variables declaration//GEN-END:variables
 
 }

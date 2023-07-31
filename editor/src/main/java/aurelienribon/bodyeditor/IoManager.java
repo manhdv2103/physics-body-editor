@@ -3,7 +3,9 @@ package aurelienribon.bodyeditor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 
+import aurelienribon.bodyeditor.models.ShapeModel;
 import com.badlogic.gdx.math.Vector2;
 
 import org.apache.commons.io.FileUtils;
@@ -14,6 +16,7 @@ import aurelienribon.bodyeditor.models.PolygonModel;
 import aurelienribon.bodyeditor.models.RigidBodyModel;
 import aurelienribon.utils.io.FilenameHelper;
 import aurelienribon.utils.notifications.ChangeableObject;
+import org.lwjgl.Sys;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -21,6 +24,8 @@ import aurelienribon.utils.notifications.ChangeableObject;
 public class IoManager extends ChangeableObject {
     public static final String PROP_PROJECTFILE = "projectFile";
     private File projectFile;
+
+    private final DecimalFormat decimalFormat = new DecimalFormat("#");
 
     public File getProjectFile() {
         return projectFile;
@@ -102,6 +107,44 @@ public class IoManager extends ChangeableObject {
             File filePath = new File(path + "/defold/" + modelName + "/" + modelName + ".go");
             FileUtils.writeStringToFile(filePath, componentString, StandardCharsets.UTF_8);
             i = 0;
+        }
+
+    }
+
+    public void exportToMatterJsFile() throws IOException, JSONException {
+
+        assert projectFile != null;
+
+        File path = getProjectDir();
+        String modelName = "";
+
+        File matterJsDirectory = new File(path + "/matter-js");
+        FileUtils.deleteDirectory(matterJsDirectory);
+
+        for (RigidBodyModel model : Ctx.bodies.getModels()) {
+
+            modelName = model.getName();
+            modelName = modelName.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
+            modelName = FilenameHelper.trim(modelName);
+
+            String shapeStringContainer = "";
+
+            shapeStringContainer += "[" + System.lineSeparator();
+
+            boolean first = true;
+            for (ShapeModel shape : model.getShapes()) {
+                for (Vector2 vertex : shape.getVertices()) {
+                    if (!first) shapeStringContainer += "," + System.lineSeparator();
+                    shapeStringContainer += "  { \"x\": " + decimalFormat.format(vertex.x) + ", \"y\": "
+                            + decimalFormat.format(vertex.y) + "}";
+                    first = false;
+                }
+            }
+
+            shapeStringContainer += System.lineSeparator() + "]";
+
+            File filePath = new File(path + "/matter-js/" + modelName + ".json");
+            FileUtils.writeStringToFile(filePath, shapeStringContainer, StandardCharsets.UTF_8);
         }
 
     }
