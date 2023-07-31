@@ -94,4 +94,8 @@ public class FilenameHelper {
         relative.append(normalizedTargetPath.substring(common.length()));
         return relative.toString();
     }
+
+    public static String trimFileExt(String fileName) {
+        return (fileName != null && fileName.contains(".")) ? fileName.substring(0, fileName.lastIndexOf('.')) : fileName;
+    }
 }

@@ -27,6 +27,8 @@ import java.io.File;
 import java.awt.Color;
 import java.awt.BorderLayout;
 
+import static aurelienribon.utils.io.FilenameHelper.trimFileExt;
+
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
@@ -158,7 +160,7 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
 
         if (chooser.showOpenDialog(Ctx.window) == JFileChooser.APPROVE_OPTION) {
             for (File file : chooser.getSelectedFiles()) {
-                String name = file.getName();
+                String name = trimFileExt(file.getName());
                 String origName = name;
                 int i = 0;
                 while (Ctx.bodies.getModel(name) != null) {
