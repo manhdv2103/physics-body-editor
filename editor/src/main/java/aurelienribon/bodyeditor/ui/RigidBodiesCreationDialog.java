@@ -137,6 +137,7 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
         chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         chooser.setFileFilter(new FileNameExtensionFilter("Image files", "png", "jpg", "jpeg"));
         chooser.setMultiSelectionEnabled(false);
+        chooser.setPreferredSize(new Dimension(800, 600));
 
         if (chooser.showOpenDialog(Ctx.window) == JFileChooser.APPROVE_OPTION) {
             RigidBodyModel model = new RigidBodyModel();
@@ -157,6 +158,7 @@ public class RigidBodiesCreationDialog extends javax.swing.JDialog {
 
         chooser.setFileFilter(new FileNameExtensionFilter("Image files", "png", "jpg", "jpeg"));
         chooser.setMultiSelectionEnabled(true);
+        chooser.setPreferredSize(new Dimension(800, 600));
 
         if (chooser.showOpenDialog(Ctx.window) == JFileChooser.APPROVE_OPTION) {
             for (File file : chooser.getSelectedFiles()) {
