@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 
+import aurelienribon.bodyeditor.canvas.Assets;
 import aurelienribon.bodyeditor.models.ShapeModel;
 import com.badlogic.gdx.math.Vector2;
 
@@ -16,7 +17,6 @@ import aurelienribon.bodyeditor.models.PolygonModel;
 import aurelienribon.bodyeditor.models.RigidBodyModel;
 import aurelienribon.utils.io.FilenameHelper;
 import aurelienribon.utils.notifications.ChangeableObject;
-import org.lwjgl.Sys;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -131,12 +131,13 @@ public class IoManager extends ChangeableObject {
 
             shapeStringContainer += "[" + System.lineSeparator();
 
+            int regionHeight = Assets.inst().getRegion(model).getRegionHeight();
             boolean first = true;
             for (ShapeModel shape : model.getShapes()) {
                 for (Vector2 vertex : shape.getVertices()) {
                     if (!first) shapeStringContainer += "," + System.lineSeparator();
                     shapeStringContainer += "  { \"x\": " + decimalFormat.format(vertex.x) + ", \"y\": "
-                            + decimalFormat.format(vertex.y) + "}";
+                            + decimalFormat.format(regionHeight - vertex.y) + "}"; // Matter.js y's axis is flipped
                     first = false;
                 }
             }
